@@ -1,0 +1,116 @@
+<div class="w-75 mr-auto ml-auto">
+
+    <form (ngSubmit)="guardar(this.reporte.value)" [formGroup]="reporte">
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Desde</label>
+                    <input formControlName="fechaDesde" type="date" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+
+
+
+            </div>
+
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Hasta</label>
+                    <input formControlName="fechaHasta" type="date" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+        <div class="text-center">
+
+            <button class="btn btn-primary col-4 mt-1" type="submit">Buscar</button>
+
+        </div>
+
+
+    </form>
+
+</div>
+
+
+
+
+
+
+<div *ngIf="reporteListas.length !=0" class="w-75 ml-auto mr-auto " >
+    <table class="table table-bordered mt-3 ">
+        <tr>
+            <th style="width: 10px">#</th>
+            <th>Fecha</th>
+            <th>Evento</th>
+            <th>Lugar</th>
+            <th>Costo</th>
+            <th>Encargado</th>
+            <th>Dias</th>
+       
+       
+
+
+        </tr>
+
+        <tr *ngFor="let item of reporteListas; let i=index">
+
+            <td>
+                {{i+1}}
+            </td>
+
+            <td>
+
+                {{item.fecha | date: 'dd/MM/yyyy HH:mm'}}
+
+            </td>
+
+            <td>
+                {{item.evento}}
+            </td>
+
+
+            <td>
+                {{item.lugar}}
+            </td>
+
+            <td>
+                {{item.costo}}
+            </td>
+
+            <td>
+                {{item.nombre}}
+            </td>
+
+            <td   [ngClass]="{
+                'rojo':item.dias <=5,
+                'naranja':item.dias >5 ,
+                'naraja': item.dias <=10,
+                'verde':item.dias >=15,
+                'cero':item.dias ==0,
+                'negativo':item.dias <0
+                                  
+                }" >
+                <div class="dias text-center">
+                    {{item.dias}} 
+                </div>
+                </td>    
+
+
+
+
+
+
+
+
+    </table>
+
+</div>

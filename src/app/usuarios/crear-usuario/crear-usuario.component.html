@@ -1,0 +1,227 @@
+<div class="card w-50 ml-auto mr-auto">
+
+
+    <div class="card-header text-center">
+        <h3>Insertar Usuario</h3>
+    </div>
+
+
+    <div class="card-body">
+
+        <div class="text-center mb-3" *ngIf="foto">
+
+            <img style="width: 100px; height: 100px;" class="img-circle" [src]=" foto ||  '../../../assets/default.jpg'" alt="">
+            
+        </div>
+
+
+        <div class="text-center mb-3" *ngIf="!foto">
+
+            <img style="width: 100px; height: 100px;" class="img-circle" [src]=" ruta ||  '../../../assets/default.jpg'" alt="">
+            
+
+
+        </div>
+
+        
+
+
+        <form  (ngSubmit)="guardar(this.usuarios.value)" [formGroup]="usuarios">
+
+
+
+
+            <!-- <div class="form-group">
+      <label for="exampleInputEmail1">Nombre</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Apellido</label>
+      <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Correo</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Direccion</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Direccion</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Direccion</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Direccion</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Direccion</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+
+    
+    
+      
+
+    <button type="submit" class="btn btn-primary">Submit</button> -->
+
+
+
+
+
+
+
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre</label>
+                        <input formControlName="nombre" type="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                            
+                            [class.border-warning]="usuarios.get('nombre')!.touched && usuarios.get('nombre')?.invalid"
+                            [class.border-success]="usuarios.get('nombre')!.touched && usuarios.get('nombre')?.valid"
+                            >
+                    </div>
+
+                </div>
+
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Apellido</label>
+                        <input formControlName="apellido" type="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                                
+                            [class.border-warning]="usuarios.get('apellido')!.touched && usuarios.get('apellido')?.invalid"
+                            [class.border-success]="usuarios.get('apellido')!.touched && usuarios.get('apellido')?.valid"
+                            >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Correo</label>
+                        <input formControlName="correo" type="text" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                            [class.border-warning]="usuarios.get('correo')!.touched && usuarios.get('correo')?.invalid"
+                            [class.border-success]="usuarios.get('correo')!.touched && usuarios.get('correo')?.valid"
+                            
+                            
+                            >
+                    </div>
+
+                </div>
+
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Direccion</label>
+                        <input formControlName="direccion" type="text" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                            [class.border-warning]="usuarios.get('direccion')!.touched && usuarios.get('direccion')?.invalid"
+                            [class.border-success]="usuarios.get('direccion')!.touched && usuarios.get('direccion')?.valid"
+                            >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Usuario</label>
+                        <input formControlName="usuario" type="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                            
+                            [class.border-warning]="usuarios.get('usuario')!.touched && usuarios.get('usuario')?.invalid"
+                            [class.border-success]="usuarios.get('usuario')!.touched && usuarios.get('usuario')?.valid"
+                            >
+                    </div>
+
+                </div>
+
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Clave</label>
+                        <input formControlName="clave" type="password" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp"
+                            
+                            [class.border-warning]="usuarios.get('clave')!.touched && usuarios.get('clave')?.invalid"
+                            [class.border-success]="usuarios.get('clave')!.touched && usuarios.get('clave')?.valid"
+                            >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row mt-3">
+
+
+
+                <div class="col">
+
+
+                    <div class="form-group text-center">
+
+
+                        <input  hidden (change)="cargar($event)"   formControlName="imagen" type="file" class="form-control" id="imagen" aria-describedby="emailHelp"
+                             #imagen> 
+
+
+                         <label (click)="imagen.click()"  class="btn btn-primary btn btn-secondary">Click para subir imagen</label>
+
+
+
+
+                           
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="text-center">
+
+                <button class="btn btn-primary col-5 mt-1" type="submit">Guardar</button>
+
+            </div>
+           
+
+
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,110 @@
+
+<div class="text-center">
+    <a  [routerLink]="['/menu/crearEvento']" class="btn btn-primary btn-primary col-4 mb-4">Nuevo Evento</a>
+</div>
+
+
+
+
+
+<div class="box-body  w-75   ml-auto mr-auto overflow-auto " style=" height: 38em" >
+    <table class="table table-bordered"  >
+        <tr>
+            <th style="width: 10px">#</th>
+            <th>Fecha</th>
+            <th>Evento</th>
+            <th>Lugar</th>
+            <th>Costo</th>
+            <th>Encargado</th>
+            <th>Dias</th>
+            <th>Opciones</th>
+        </tr>
+
+        <tr *ngFor="let item of  eventos; let i=index">
+
+            <td>
+                    {{i+1}}
+            </td>
+
+            <td>
+                
+                {{item.fecha | date: 'dd/MM/yyyy HH:mm'}} 
+
+            </td>
+
+            <td>
+                {{item.evento}} 
+            </td>
+
+
+            <td>
+                {{item.lugar}} 
+            </td>
+
+            <td>
+                {{item.costo}} 
+            </td>
+
+            <td>
+                {{item.nombre}} 
+            </td>
+
+            
+            <td   [ngClass]="{
+            'rojo':item.dias <=5,
+            'naranja':item.dias >5 ,
+            'naraja': item.dias <=10,
+            'verde':item.dias >=15,
+            'cero':item.dias ==0,
+            'negativo':item.dias <0
+                              
+            }" >
+            <div class="dias text-center">
+                {{item.dias}} 
+            </div>
+            </td>   
+            
+          
+
+      
+
+
+        
+
+
+
+
+            <td>
+        <tr>
+            <div class="row">
+
+                <div class="col mb-2">
+
+                    <a  [routerLink]="['/menu/editarEvento/',item.idEvento]"class="btn btn-block btn-primary">Editar</a>
+
+                </div>
+
+
+                <div class="col">
+
+                    <a  (click)="eliminar(item.idEvento)" class="btn btn-block btn-danger">Eliminar</a>
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </tr>
+
+        </td>
+
+
+        </tr>
+
+
+    </table>
+</div>

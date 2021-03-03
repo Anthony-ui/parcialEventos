@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+.rojo
+{
+font-size: large;
+color: red;
+text-shadow: seagreen;
+}
+
+
+.naranja
+{
+    font-size: large;
+    color: orange;
+}
+
+
+.verde
+{
+    font-size: large;
+    color: green;
+}
+
+.cero .dias{
+ display: none;
+}
+
+.cero{
+    text-align: center;
+}
+
+.cero::after
+{
+   content: "Hoy";
+   text-align: center;
+}
+
+.negativo{
+    text-align: center;
+}
+
+
+.negativo::after
+{
+   content: "Vencido";
+ 
+}
+
+
+

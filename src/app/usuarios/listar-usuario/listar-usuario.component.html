@@ -1,0 +1,74 @@
+
+<div class="text-center">
+    <a  [routerLink]="['/menu/crearUsuario']" class="btn btn-primary btn-primary col-4 mb-4">Nuevo Usuario</a>
+</div>
+
+
+
+
+<div class="box-body  w-75 ml-auto mr-auto overflow-auto"style=" height: 38em" >
+    <table class="table table-bordered">
+        <tr>
+            <th style="width: 10px">#</th>
+            <th>Nombres</th>
+            <th>Correo</th>
+            <th>Direccion</th>
+            <th>Opciones</th>
+        </tr>
+
+        <tr *ngFor="let item of usuariosLista; let i=index">
+
+            <td>
+                    {{i+1}}
+            </td>
+
+            <td>
+                
+                {{item.nombre}} {{item.apellido}}
+
+            </td>
+
+            <td>
+                {{item.correo}} 
+            </td>
+
+
+            <td>
+                {{item.direccion}} 
+            </td>
+
+
+            <td>
+        <tr>
+            <div class="row">
+
+                <div class="col mb-2">
+
+                    <a     [routerLink]="['/menu/editarUsuario/',item.idUsuario]"class="btn btn-block btn-primary">Editar</a>
+
+                </div>
+
+
+                <div class="col">
+
+                    <a  (click)="eliminar(item.idUsuario)" class="btn btn-block btn-danger">Eliminar</a>
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </tr>
+
+        </td>
+
+
+        </tr>
+
+
+    </table>
+</div>
